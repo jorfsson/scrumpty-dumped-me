@@ -26,7 +26,7 @@ class App extends React.Component {
     this.updateSprintList = this.updateSprintList.bind(this);
     this.logout = this.logout.bind(this);
     this.setSprint = this.setSprint.bind(this);
-    
+
     this.socket = socketIOClient("http://127.0.0.1:1337")
   }
 
@@ -56,7 +56,7 @@ class App extends React.Component {
       sprint_id: id
     })
   }
-  
+
   updateUser() {
     // Check for user credentials, then fetch sprints for user
     api.verify().then((user) => {
@@ -80,9 +80,9 @@ class App extends React.Component {
           <hr style={{ marginBottom: '3.5em' }} />
           <Route
             exact
-            path="/"  
+            path="/"
             render={
-              () => this.state.user && this.state.sprint ? <Redirect to={this.state.sprint} /> : 
+              () => this.state.user && this.state.sprint ? <Redirect to={this.state.sprint} /> :
                 <Login history={history} updateUser={this.updateUser} />}
           />
           {/*<Route

@@ -1,6 +1,11 @@
 const { knex } = require('./knex');
 
 const self = (module.exports = {
+  addMessage: (user, message) => knex('chathistory')
+    .insert({user, message})
+    .then(()=> knex('chathistory')
+    .select()),
+
   addTask: (title, description, sprint_id, user_id) => knex('tasks')
     .insert({ title, description, sprint_id, user_id })
     .then(id => knex('tasks')

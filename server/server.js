@@ -12,6 +12,7 @@ const sprints = require('./routes/sprints');
 const graphQLHTTP = require('express-graphql');
 const schema = require('./graphql/graphqlSchema');
 const logout = require('./routes/logout');
+const db = require('../database/db')
 
 const port = process.env.PORT || 1337;
 
@@ -69,8 +70,9 @@ const io = require('socket.io')(server);
 
 io.on('connection', function (client) {
   console.log('SOCKET 2 ME BB')
-  
-  client.on('message', (message) => {
-    console.log(message)
+
+  client.on('message', (data) => {
+    db.addMessage(data.user, data.message).then((history)=>{client.emit('chathistory', history)})
+    console.log(data)
   })
 })

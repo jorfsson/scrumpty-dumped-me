@@ -5,7 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import Chat from './Chat.jsx'
+
 class SelectedProfile extends React.Component {
   render() {
     const styles = {
@@ -18,8 +18,6 @@ class SelectedProfile extends React.Component {
         paddingTop: '56.25%', // 16:9
       },
     };
-
-    console.log(this.props.selectedProfile);
 
     let { profile_image_url } = this.props.selectedProfile;
 
@@ -47,9 +45,6 @@ class SelectedProfile extends React.Component {
               sprint_id={this.props.sprint_id}
               reload={this.props.reload}
               selected={this.props.selectedProfile}
-            />
-            <Chat
-              
             />
           </CardActions>
         </Card>
